@@ -1,6 +1,6 @@
 'use client';
 import { INavigate } from '@/models/navigate';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 interface Props {
     navigate_urls: string[];
@@ -8,8 +8,6 @@ interface Props {
 }
 
 export const NavigateUrl = ({ navigate_urls, navigates }: Props) => {
-    const [navigateHandledURLs, setNavigateHandledURLs] = useState<string[]>([]);
-
     const handleShowURL = (url: string) => {
         if (url.length === 0) return 'Trang chủ';
         for(let item of navigates) {
@@ -19,7 +17,7 @@ export const NavigateUrl = ({ navigate_urls, navigates }: Props) => {
     };
 
     return (
-        <div className="container mx-auto mt-[72px]">
+        <div className="container mx-auto">
             <ul className="flex items-center justify-center">
                 {
                     navigate_urls.map((url, index) => {
