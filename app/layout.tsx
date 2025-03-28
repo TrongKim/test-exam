@@ -3,6 +3,10 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/Nav/nav";
 
+import { Raleway } from 'next/font/google'
+
+const raleway = Raleway({ subsets: ['latin'], weight: ['400', '700'] });
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -30,7 +34,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Foso Soft</title>
       </head>
-      <body>
+      <body className={raleway.className}>
         <Nav />
         {children}
       </body>
