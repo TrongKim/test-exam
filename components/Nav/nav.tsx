@@ -38,7 +38,7 @@ export const Nav = () => {
     }, []);
 
     const colorSelectedRouteHandler = (url: string): string => {
-        if (pathSplit[0] && pathSplit[0] === url) return 'text-[#1AD598]';
+        if (pathSplit[1] && pathSplit[1] === url) return 'font-bold';
         return '';
     }
 
@@ -52,7 +52,7 @@ export const Nav = () => {
                     {
                         navigates.map((navigate, index) => {
                             return (
-                                <Link key={navigate.url + index} className={"text-gray-800 hover:text-[#1AD598] text-sm flex items-center justify-between gap-2 " + colorSelectedRouteHandler(navigate.url)} href={"/" + navigate.url}>
+                                <Link key={navigate.url + index} className={"text-gray-800 text-sm flex items-center justify-between gap-2 " + colorSelectedRouteHandler(navigate.url)} href={"/" + navigate.url}>
                                     {navigate.name}
                                     {
                                         navigate.child.length > 0 ? (
