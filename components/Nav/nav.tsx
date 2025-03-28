@@ -31,7 +31,7 @@ export const Nav = () => {
 
     return (
         <>
-            <header className="bg-white mt-6">
+            <header className="bg-white mt-6 mb-6">
                 <div className="container flex mx-auto py-3 justify-center items-center rounded-full shadow-md gap-16">
                     <div className="flex items-center space-x-2">
                         <Image src="/logo.png" alt="logo" width={134} height={55} />
