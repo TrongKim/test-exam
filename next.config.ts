@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
   env: {
-    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || `https://${process.env.VERCEL_URL}`,
+    NEXT_PUBLIC_API_URL: `https://${process.env.VERCEL_URL}`,
   },
 };
 
