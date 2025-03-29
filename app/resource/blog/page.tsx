@@ -12,12 +12,12 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Blog - Bài viết mới nhất",
         description: "Khám phá các bài viết mới nhất về công nghệ, lập trình và nhiều lĩnh vực khác.",
-        url: "http://localhost:3000/resource/blog",
+        url: "127.0.0.1/resource/blog",
         siteName: "FOSO SOFT",
         type: "website",
         images: [
             {
-                url: "http://localhost:3000/",
+                url: "127.0.0.1/",
                 width: 1200,
                 height: 630,
                 alt: "Blog - Bài viết mới nhất",
