@@ -11,7 +11,7 @@ interface Props {
 export const NavigateUrl = ({ navigate_urls, navigates, detail }: Props) => {
     const handleShowURL = (url: string) => {
         if (url.length === 0) return 'Trang chủ';
-        for (let item of navigates) {
+        for (const item of navigates) {
             if (url === item.url) return item.name;
         }
         return url;

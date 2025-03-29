@@ -47,6 +47,10 @@ export const PostDetail = ({ post_detail }: Props) => {
         );
     };
 
+    const onClickShowMenu = (): void => {
+        setIsShowMenu(!isShowMenu);
+    };
+
     const handleShowContent = (content: string | string[], contentType: EPostContentType) => {
         switch (contentType) {
             case EPostContentType.NORMAL:
@@ -231,79 +235,84 @@ export const PostDetail = ({ post_detail }: Props) => {
                             </div>
                         </div>
                     </div>
-                    <div className="w-fit">
+                    <div className="w-fit min-w-[417px]">
                         <div>
-                            <div className="flex items-center justify-between cursor-pointer pointer-events-auto mb-[24px]">
+                            <button onClick={onClickShowMenu} className="flex items-center justify-between w-full cursor-pointer pointer-events-auto mb-[24px]">
                                 <h4 className="text-[#050505] text-[24px] font-extrabold leading-[200%]">Nội dung bài viết</h4>
                                 <svg className={isShowMenu ? '' : 'rotate-180'} width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M24.2969 20.2059C24.1924 20.3108 24.0682 20.394 23.9314 20.4508C23.7947 20.5076 23.6481 20.5368 23.5 20.5368C23.3519 20.5368 23.2053 20.5076 23.0686 20.4508C22.9318 20.394 22.8076 20.3108 22.7031 20.2059L16.0009 13.5038L9.29687 20.2059C9.08553 20.4173 8.79888 20.536 8.5 20.536C8.20111 20.536 7.91447 20.4173 7.70312 20.2059C7.49178 19.9946 7.37305 19.708 7.37305 19.4091C7.37305 19.1102 7.49178 18.8235 7.70312 18.6122L15.2031 11.1122C15.3076 11.0073 15.4318 10.9241 15.5686 10.8673C15.7053 10.8105 15.8519 10.7813 16 10.7813C16.1481 10.7813 16.2947 10.8105 16.4314 10.8673C16.5682 10.9241 16.6924 11.0073 16.7969 11.1122L24.2969 18.6122C24.4018 18.7167 24.485 18.8409 24.5418 18.9776C24.5985 19.1144 24.6278 19.261 24.6278 19.4091C24.6278 19.5571 24.5985 19.7037 24.5418 19.8405C24.485 19.9772 24.4018 20.1014 24.2969 20.2059Z" fill="#15AA7A" />
                                 </svg>
-                            </div>
-                            <div>
-                                <button onClick={() => clickScrollTo(0)} className={"flex items-center text-[18px] font-medium leading-[200%] gap-[5px] " + (selectedMenu === 0 ? 'text-[#15AA7A]' : 'text-[#33404A]')}>
-                                    <p>1. </p>
-                                    Quy trình 5S là gì?
-                                </button>
-                                <button onClick={() => clickScrollTo(1)} className={"flex items-center text-[18px] font-medium leading-[200%] gap-[5px] " + (selectedMenu === 1 ? 'text-[#15AA7A]' : 'text-[#33404A]')}>
-                                    <p>2. </p>
-                                    Lợi ích quy trình 5S đem lại
-                                </button>
-                                <button onClick={() => clickScrollTo(2)} className="flex flex-col">
-                                    <div className={"flex items-center text-[18px] font-medium leading-[200%] gap-[5px] " + (selectedMenu === 2 ? 'text-[#15AA7A]' : 'text-[#33404A]')}>
-                                        <p>3. </p>
-                                        Tại sao doanh nghiệp nên áp dụng quy trình 5S?
+                            </button>
+                            {
+                                isShowMenu ? (
+                                    <div>
+                                        <button onClick={() => clickScrollTo(0)} className={"flex items-center text-[18px] font-medium leading-[200%] gap-[5px] " + (selectedMenu === 0 ? 'text-[#15AA7A]' : 'text-[#33404A]')}>
+                                            <p>1. </p>
+                                            Quy trình 5S là gì?
+                                        </button>
+                                        <button onClick={() => clickScrollTo(1)} className={"flex items-center text-[18px] font-medium leading-[200%] gap-[5px] " + (selectedMenu === 1 ? 'text-[#15AA7A]' : 'text-[#33404A]')}>
+                                            <p>2. </p>
+                                            Lợi ích quy trình 5S đem lại
+                                        </button>
+                                        <button onClick={() => clickScrollTo(2)} className="flex flex-col">
+                                            <div className={"flex items-center text-[18px] font-medium leading-[200%] gap-[5px] " + (selectedMenu === 2 ? 'text-[#15AA7A]' : 'text-[#33404A]')}>
+                                                <p>3. </p>
+                                                Tại sao doanh nghiệp nên áp dụng quy trình 5S?
+                                            </div>
+                                            <div className="flex flex-col w-fit pl-[25px]">
+                                                <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>3.1 </p>Cải thiện rõ nét môi trường làm việc</div>
+                                                <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>3.2 </p>Tiết kiệm thời gian đáng kể</div>
+                                                <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>3.3 </p>Tăng năng suất làm việc</div>
+                                                <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>3.4 </p>Tiết kiệm chi phí</div>
+                                                <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>3.5 </p>Tăng chất lượng sản phẩm</div>
+                                            </div>
+                                        </button>
+                                        <button onClick={() => clickScrollTo(3)} className="flex flex-col">
+                                            <div className={"flex items-center text-[18px] font-medium leading-[200%] gap-[5px] " + (selectedMenu === 3 ? 'text-[#15AA7A]' : 'text-[#33404A]')}>
+                                                <p>4. </p>
+                                                Quy trình 5S gồm các bước
+                                            </div>
+                                            <div className="flex flex-col w-fit pl-[25px]">
+                                                <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>4.1 </p>Seiri (Ngăn nắp)</div>
+                                                <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>4.2 </p>Seiton (Sắp xếp)</div>
+                                                <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>4.3 </p>Seiso (Vệ sinh)</div>
+                                                <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>4.4 </p>Seiketsu (Tiêu chuẩn hóa)</div>
+                                                <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>4.5 </p>Shitsuke (Kỷ luật)</div>
+                                            </div>
+                                        </button>
+                                        <button onClick={() => clickScrollTo(4)} className="flex flex-col">
+                                            <div className={"flex items-center text-[18px] font-medium leading-[200%] gap-[5px] " + (selectedMenu === 4 ? 'text-[#15AA7A]' : 'text-[#33404A]')}>
+                                                <p>5. </p>
+                                                Quy trình được thực hiện như sau
+                                            </div>
+                                            <div className="flex flex-col w-fit pl-[25px]">
+                                                <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>5. </p>Giai đoạn chuẩn bị</div>
+                                                <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>5. </p>Triển khai rộng rãi</div>
+                                                <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>5. </p>Thực hiện vệ sinh toàn bộ doanh nghiệp</div>
+                                                <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>5. </p>Sàng lọc, sắp xếp và đánh giá</div>
+                                                <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>5. </p>Đánhh giá</div>
+                                            </div>
+                                        </button>
+                                        <button onClick={() => clickScrollTo(5)} className="flex flex-col">
+                                            <div className={"flex items-center text-[18px] font-medium leading-[200%] gap-[5px] " + (selectedMenu === 5 ? 'text-[#15AA7A]' : 'text-[#33404A]')}>
+                                                <p>6. </p>
+                                                Quy trình 5S có giống với Kaizen?
+                                            </div>
+                                        </button>
+                                        <button onClick={() => clickScrollTo(6)} className="flex flex-col">
+                                            <div className={"flex items-center text-[18px] font-medium leading-[200%] gap-[5px] " + (selectedMenu === 6 ? 'text-[#15AA7A]' : 'text-[#33404A]')}>
+                                                <p>7. </p>Đối tượng nào nên áp dụng 5S
+                                            </div>
+                                        </button>
+                                        <button onClick={() => clickScrollTo(7)} className="flex flex-col">
+                                            <div className={"flex items-center text-[18px] font-medium leading-[200%] gap-[5px] " + (selectedMenu === 7 ? 'text-[#15AA7A]' : 'text-[#33404A]')}>
+                                                <p>8. </p>Các yếu tố tạo nên thành công cho quy trình 5S
+                                            </div>
+                                        </button>
                                     </div>
-                                    <div className="flex flex-col w-fit pl-[25px]">
-                                        <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>3.1 </p>Cải thiện rõ nét môi trường làm việc</div>
-                                        <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>3.2 </p>Tiết kiệm thời gian đáng kể</div>
-                                        <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>3.3 </p>Tăng năng suất làm việc</div>
-                                        <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>3.4 </p>Tiết kiệm chi phí</div>
-                                        <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>3.5 </p>Tăng chất lượng sản phẩm</div>
-                                    </div>
-                                </button>
-                                <button onClick={() => clickScrollTo(3)} className="flex flex-col">
-                                    <div className={"flex items-center text-[18px] font-medium leading-[200%] gap-[5px] " + (selectedMenu === 3 ? 'text-[#15AA7A]' : 'text-[#33404A]')}>
-                                        <p>4. </p>
-                                        Quy trình 5S gồm các bước
-                                    </div>
-                                    <div className="flex flex-col w-fit pl-[25px]">
-                                        <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>4.1 </p>Seiri (Ngăn nắp)</div>
-                                        <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>4.2 </p>Seiton (Sắp xếp)</div>
-                                        <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>4.3 </p>Seiso (Vệ sinh)</div>
-                                        <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>4.4 </p>Seiketsu (Tiêu chuẩn hóa)</div>
-                                        <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>4.5 </p>Shitsuke (Kỷ luật)</div>
-                                    </div>
-                                </button>
-                                <button onClick={() => clickScrollTo(4)} className="flex flex-col">
-                                    <div className={"flex items-center text-[18px] font-medium leading-[200%] gap-[5px] " + (selectedMenu === 4 ? 'text-[#15AA7A]' : 'text-[#33404A]')}>
-                                        <p>5. </p>
-                                        Quy trình được thực hiện như sau
-                                    </div>
-                                    <div className="flex flex-col w-fit pl-[25px]">
-                                        <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>5. </p>Giai đoạn chuẩn bị</div>
-                                        <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>5. </p>Triển khai rộng rãi</div>
-                                        <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>5. </p>Thực hiện vệ sinh toàn bộ doanh nghiệp</div>
-                                        <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>5. </p>Sàng lọc, sắp xếp và đánh giá</div>
-                                        <div className="flex items-center gap-[5px] text-[18px] font-medium leading-[200%]"><p>5. </p>Đánhh giá</div>
-                                    </div>
-                                </button>
-                                <button onClick={() => clickScrollTo(5)} className="flex flex-col">
-                                    <div  className={"flex items-center text-[18px] font-medium leading-[200%] gap-[5px] " + (selectedMenu === 5 ? 'text-[#15AA7A]' : 'text-[#33404A]')}>
-                                        <p>6. </p>
-                                        Quy trình 5S có giống với Kaizen?
-                                    </div>
-                                </button>
-                                <button onClick={() => clickScrollTo(6)} className="flex flex-col">
-                                    <div className={"flex items-center text-[18px] font-medium leading-[200%] gap-[5px] " + (selectedMenu === 6 ? 'text-[#15AA7A]' : 'text-[#33404A]')}>
-                                        <p>7. </p>Đối tượng nào nên áp dụng 5S
-                                    </div>
-                                </button>
-                                <button onClick={() => clickScrollTo(7)} className="flex flex-col">
-                                    <div className={"flex items-center text-[18px] font-medium leading-[200%] gap-[5px] " + (selectedMenu === 7 ? 'text-[#15AA7A]' : 'text-[#33404A]')}>
-                                        <p>8. </p>Các yếu tố tạo nên thành công cho quy trình 5S
-                                    </div>
-                                </button>
-                            </div>
+                                ) : ''
+                            }
+
                         </div>
                         <div className="mt-[24px]">
                             <PRSide />
