@@ -3,7 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/Nav/nav";
 
-import { Raleway } from 'next/font/google'
+import { Raleway } from 'next/font/google';
+import NextTopLoader from 'nextjs-toploader';
 
 const raleway = Raleway({ subsets: ['latin'], weight: ['400', '700'] });
 
@@ -35,6 +36,7 @@ export default function RootLayout({
         <title>Foso Soft</title>
       </head>
       <body className={raleway.className}>
+        <NextTopLoader color="#76E6C1" height={10} showSpinner={false} />
         <Nav />
         {children}
       </body>

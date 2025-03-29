@@ -5,25 +5,26 @@ import React from 'react';
 interface Props {
     navigate_urls: string[];
     navigates: INavigate[];
+    detail?: string;
 }
 
-export const NavigateUrl = ({ navigate_urls, navigates }: Props) => {
+export const NavigateUrl = ({ navigate_urls, navigates, detail }: Props) => {
     const handleShowURL = (url: string) => {
         if (url.length === 0) return 'Trang chủ';
-        for(let item of navigates) {
+        for (let item of navigates) {
             if (url === item.url) return item.name;
         }
-        return 'Unknown';
+        return url;
     };
 
     return (
         <div className="container mx-auto">
             <ul className="flex items-center justify-center">
                 {
-                    navigate_urls.map((url, index) => {
+                    (detail ? navigate_urls.slice(0, navigate_urls.length - 1) : navigate_urls).map((url, index) => {
                         return (
                             <li key={url + index} className="flex items-center">
-                                <p className={"font-sm " + (index === navigate_urls.length - 1 ? 'font-bold' : 'font-normal')}>{handleShowURL(url)}</p>
+                                <p className={"font-sm first-letter:uppercase " + (index === navigate_urls.length - 1 && !detail ? 'font-bold' : 'font-normal')}>{handleShowURL(url)}</p>
                                 {
                                     index !== navigate_urls.length - 1 ?
                                         <pre className="font-sm font-normal">{'>'}</pre>
@@ -32,6 +33,13 @@ export const NavigateUrl = ({ navigate_urls, navigates }: Props) => {
                             </li>
                         );
                     })
+                }
+                {
+                    detail ? (
+                        <li className="flex items-center">
+                            <p className="font-sm font-bold first-letter:uppercase">{detail}</p>
+                        </li>
+                    ) : ''
                 }
             </ul>
         </div>

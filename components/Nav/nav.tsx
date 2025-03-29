@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { NavigateUrl } from '../NavigateUrl/navigate_url';
 import { INavigate } from '@/models/navigate';
 
 export const Nav = () => {
@@ -20,8 +19,8 @@ export const Nav = () => {
         } else {
             const initialData: INavigate[] = [
                 { url: "about-us", name: "Về chúng tôi", child: [] },
-                { url: "solution", name: "Giải pháp", child: [{ url: "blog", name: "Blog" }] },
-                { url: "resource", name: "Tài nguyên", child: [{ url: "blog", name: "Blog" }] },
+                { url: "solution", name: "Giải pháp", child: [{ url: "blog", name: "Blog" } ]},
+                { url: "resource", name: "Tài nguyên", child: [{ url: "blog", name: "Blog" }, { url: "blog-2", name: "Blog 2" }] },
                 { url: "contact", name: "Liên hệ", child: [] },
             ];
 
@@ -43,8 +42,8 @@ export const Nav = () => {
     }
 
     return (
-        <header className="bg-white mt-6 mb-6">
-            <div className="container flex mx-auto py-3 justify-center items-center rounded-full shadow-md gap-16">
+        <header className="pt-6 pb-6">
+            <div className="container bg-white flex mx-auto py-3 justify-center items-center rounded-full shadow-md gap-16 filter shadow-[inset_0px_2px_83.99px_rgba(0,0,0,0.02)] shadow-[-9px_20px_59.99px_-24px_rgba(0,0,0,0.05)] shadow-[1px_-1px_0px_0px_#FFFFFF] shadow-[-1px_1px_0px_0px_#F0F0F0]">
                 <div className="flex items-center space-x-2">
                     <Image src="/logo.png" alt="logo" width={134} height={55} />
                 </div>
@@ -52,16 +51,29 @@ export const Nav = () => {
                     {
                         navigates.map((navigate, index) => {
                             return (
-                                <Link key={navigate.url + index} className={"text-gray-800 text-sm flex items-center justify-between gap-2 " + colorSelectedRouteHandler(navigate.url)} href={"/" + navigate.url}>
-                                    {navigate.name}
-                                    {
-                                        navigate.child.length > 0 ? (
-                                            <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M13.854 7.05876L8.85403 12.0588C8.80759 12.1052 8.75245 12.1421 8.69175 12.1673C8.63105 12.1924 8.56599 12.2054 8.50028 12.2054C8.43457 12.2054 8.36951 12.1924 8.30881 12.1673C8.24811 12.1421 8.19296 12.1052 8.14653 12.0588L3.14653 7.05876C3.05271 6.96494 3 6.83769 3 6.70501C3 6.57232 3.05271 6.44508 3.14653 6.35125C3.24035 6.25743 3.3676 6.20473 3.50028 6.20473C3.63296 6.20473 3.76021 6.25743 3.85403 6.35125L8.50028 10.9981L13.1465 6.35125C13.193 6.3048 13.2481 6.26795 13.3088 6.24281C13.3695 6.21767 13.4346 6.20473 13.5003 6.20473C13.566 6.20473 13.631 6.21767 13.6917 6.24281C13.7524 6.26795 13.8076 6.3048 13.854 6.35125C13.9005 6.39771 13.9373 6.45286 13.9625 6.51356C13.9876 6.57425 14.0006 6.63931 14.0006 6.70501C14.0006 6.7707 13.9876 6.83576 13.9625 6.89645C13.9373 6.95715 13.9005 7.0123 13.854 7.05876Z" fill="#25272A" />
-                                            </svg>
-                                        ) : ''
-                                    }
-                                </Link>
+                                <div key={navigate.url + index} className="relative group">
+                                    <Link className={"text-gray-800 text-sm flex items-center justify-between gap-2 " + colorSelectedRouteHandler(navigate.url)} href={"/" + navigate.url}>
+                                        {navigate.name}
+                                        {
+                                            navigate.child.length > 0 ? (
+                                                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M13.854 7.05876L8.85403 12.0588C8.80759 12.1052 8.75245 12.1421 8.69175 12.1673C8.63105 12.1924 8.56599 12.2054 8.50028 12.2054C8.43457 12.2054 8.36951 12.1924 8.30881 12.1673C8.24811 12.1421 8.19296 12.1052 8.14653 12.0588L3.14653 7.05876C3.05271 6.96494 3 6.83769 3 6.70501C3 6.57232 3.05271 6.44508 3.14653 6.35125C3.24035 6.25743 3.3676 6.20473 3.50028 6.20473C3.63296 6.20473 3.76021 6.25743 3.85403 6.35125L8.50028 10.9981L13.1465 6.35125C13.193 6.3048 13.2481 6.26795 13.3088 6.24281C13.3695 6.21767 13.4346 6.20473 13.5003 6.20473C13.566 6.20473 13.631 6.21767 13.6917 6.24281C13.7524 6.26795 13.8076 6.3048 13.854 6.35125C13.9005 6.39771 13.9373 6.45286 13.9625 6.51356C13.9876 6.57425 14.0006 6.63931 14.0006 6.70501C14.0006 6.7707 13.9876 6.83576 13.9625 6.89645C13.9373 6.95715 13.9005 7.0123 13.854 7.05876Z" fill="#25272A" />
+                                                </svg>
+                                            ) : ''
+                                        }
+                                    </Link>
+                                    <div className="transform scale-y-0 opacity-0 transition-all duration-200 origin-top group-hover:scale-y-100 group-hover:opacity-100 absolute top-[100%] right-[0] bg-white rounded-[5px] shadow-md w-[150%] flex flex-col">
+                                        {
+                                            navigate.child.map((child, index) => {
+                                                return (
+                                                    <Link className="px-[10px] py-[2px]" key={child.name + index} href={"/" + navigate.url + "/" + child.url}>
+                                                        {child.name}
+                                                    </Link>
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                </div>
                             )
                         })
                     }
