@@ -1,7 +1,8 @@
 export const revalidate = 13600;
 
 export async function getPostDetail(postId: string) {
-    const res = await fetch(`http://localhost:3000/api/post/detail?postId=${postId}`, {
+    const url = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
+    const res = await fetch(`${url}/api/post/detail?postId=${postId}`, {
         next: { revalidate: revalidate },
     });
 
