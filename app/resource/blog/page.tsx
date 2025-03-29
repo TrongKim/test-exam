@@ -1,9 +1,9 @@
-import { getPosts } from '@/app/api/post';
 import { BannerInformation } from '@/components/BannerInformation/banner_information';
 import { PostsDisplay } from '@/components/PostsDisplay/posts_display';
 import { IReviewPost } from '@/models/post';
 import React from 'react';
 import { Metadata } from "next";
+import { getPosts } from '@/app/api/post';
 
 export const metadata: Metadata = {
     title: "Blog - Bài viết mới nhất",
