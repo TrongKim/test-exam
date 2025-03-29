@@ -1,8 +1,8 @@
 export const revalidate = 86400;
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 export async function getPosts(page = 1, limit = 6) {
-    const url = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
-    const res = await fetch(`127.0.0.1/api/post?page=${page}&limit=${limit}`, {
+    const res = await fetch(`${API_URL}/api/post?page=${page}&limit=${limit}`, {
         next: { revalidate: revalidate },
     });
 
